@@ -3,16 +3,13 @@
 
 ## How to build
 
-**This container requires a local image of [M3-Repos/docker-hercules](https://github.com/M3-Repos/docker-hercules).**
-
 ```
-git clone https://github.com/m3-repos/hercules-tk5
-docker build --tag m3-repos/tk5 hercules-tk5
+docker build --tag m3-repos/tk5 https://github.com/m3-repos/hercules-tk5.git
 ```
 
 ## How to run
 ```
-docker run -ti -p 3270:3270 -p 8038:8038 tk5
+docker run -d \
+        --cap-add=NET_ADMIN,SYS_NICE \
+        -p 3270:3270 -p 8038:8038 tk5
 ```
-
-*Tested in a rootless podman environment under Fedora Linux & macOS*
